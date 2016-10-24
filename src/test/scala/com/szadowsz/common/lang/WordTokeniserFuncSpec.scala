@@ -28,7 +28,7 @@ import org.scalatest.LoneElement._
 @RunWith(classOf[JUnitRunner])
 class WordTokeniserFuncSpec extends FunSpec with Matchers {
 
-  describe("Capitalisation Function"){
+  describe("Tokenisation Function"){
 
     it("should only return a single element if no delimiters are found"){
       val list = WordTokeniser.tokenise("NASA")
