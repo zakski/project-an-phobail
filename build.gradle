@@ -12,7 +12,7 @@ apply plugin: 'scala'
 ext {
     scalaVersion = '2.11.8'
     sparkVersion = '2.0.0'
-    scalaTestVersion = '2.2.4'
+    scalaTestVersion = '3.0.0'
     slf4jVersion = '1.7.12'
     junitVersion = '4.11'
     superCsvVersion = '2.3.1'
