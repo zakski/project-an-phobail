@@ -31,8 +31,8 @@ object FileFinder {
     * @param filter optional file filter, null if not needed.
     * @return an array of found files.
     */
-  private def search(dir: File, filter: FilenameFilter): Array[File] = {
-    dir.listFiles(filter).flatMap(file => if (file.isDirectory) search(file, filter) else List(file))
+  private def searchRecursively(dir: File, filter: FilenameFilter): Array[File] = {
+    dir.listFiles(filter).flatMap(file => if (file.isDirectory) searchRecursively(file, filter) else List(file))
   }
 
   /**
@@ -42,7 +42,7 @@ object FileFinder {
     * @param filter        optional file filter.
     * @return the list of found files.
     */
-  def search(directoryPath: String, filter: Option[FilenameFilter] = None): Array[File] = search(new File(directoryPath), filter)
+  def search(directoryPath: String, filter: Option[FilenameFilter]): Array[File] = search(new File(directoryPath), filter)
 
 
   /**
@@ -52,9 +52,9 @@ object FileFinder {
     * @param filter    optional file filter.
     * @return an array of found files.
     */
-  def search(directory: File, filter: Option[FilenameFilter] = None): Array[File] = {
+  def search(directory: File, filter: Option[FilenameFilter]): Array[File] = {
     if (directory.exists() && directory.isDirectory) {
-      search(directory, filter.orNull)
+      searchRecursively(directory, filter.orNull)
     } else {
       Array()
     }
