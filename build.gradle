@@ -19,11 +19,6 @@ ext {
 }
 
 idea {
-    project {
-        languageLevel = '1.8'
-        vcs = 'Git'
-    }
-
     module {
         downloadJavadoc = true
         downloadSources = true
