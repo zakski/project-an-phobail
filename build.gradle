@@ -1,6 +1,6 @@
 // Equivalent to groupid and version in maven, artifactid equivalent is set in settings.gradle.
 group 'com.szadowsz'
-version '0.0.1'
+version '0.0.2'
 
 buildscript {
     repositories {
@@ -22,6 +22,14 @@ apply plugin: 'com.jfrog.bintray'
 // Add necessary language support
 apply plugin: 'java'
 apply plugin: 'scala'
+
+ext {
+    scalaVersion = '2.11.8'
+    scalaTestVersion = '3.0.0'
+    slf4jVersion = '1.7.12'
+    junitVersion = '4.11'
+    superCsvVersion = '2.3.1'
+}
 
 idea {
     module {
@@ -67,9 +75,9 @@ bintray {
         githubRepo ='zakski/project-an-phobail'
         publicDownloadNumbers = false
         version {
-            name = '0.0.1-snapshot'
-            desc = 'Common Scala Functions 0.0.1'
-            vcsTag = '0.0.1'
+            name = '0.0.2-snapshot'
+            desc = 'Common Scala Functions 0.0.2'
+            vcsTag = '0.0.2'
         }
     }
 }
