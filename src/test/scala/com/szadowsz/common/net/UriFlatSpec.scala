@@ -178,6 +178,26 @@ class UriFlatSpec extends FlatSpec with Matchers {
       uri.toString should be (url)
     }
 
+
+
+
+  it should "handle a Uri with dashes" in {
+    val url: String = "http://football-data.mx-api.enetscores.com/page/xhr/standings/"
+    val uri = Uri(url)
+
+    uri.scheme should be("http")
+    uri.userOpt should be(None)
+    uri.passwordOpt should be(None)
+    uri.host should be("football-data.mx-api.enetscores.com")
+    uri.portOpt should be(None)
+    uri.path should be("/page/xhr/standings/")
+    uri.queryOpt should be(None)
+    uri.fragmentOpt should be(None)
+
+    uri.toString should be (url)
+  }
+
+
     it should "handle scheme replacement" in {
       val url: String = "http://www.example.com"
       val url2: String = "https://www.example.com"

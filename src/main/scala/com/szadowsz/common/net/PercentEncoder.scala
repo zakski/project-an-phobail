@@ -23,7 +23,7 @@ import functions._
 private[net] object PercentEncoder {
   private val alpha = "[a-zA-Z]"
   private val digit = "\\d"
-  private val unreserved = "[" + alpha + digit + "\\.-_~]"
+  private val unreserved = "[" + alpha + digit + "\\.\\-_~]"
   private val reserved = "[\\?\\*\\+\\(\\)\\$:/#\\[\\]@!&',;=]"
 
   private val alphaR = alpha.r
