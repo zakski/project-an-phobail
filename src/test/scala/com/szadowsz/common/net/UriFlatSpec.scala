@@ -67,6 +67,28 @@ class UriFlatSpec extends FlatSpec with Matchers {
     uri.fragmentOpt should be(None)
   }
 
+  it should "handle an already percent encoded URL" in {
+    val percentUrl: String = "http://www.example.com/test/my%20first%20url.html"
+
+    val uri = Uri(percentUrl)
+
+    uri.toString should be(percentUrl)
+
+    uri.schemeOpt should be(Some("http"))
+    uri.scheme should be("http")
+
+    uri.hostOpt should be(Some("www.example.com"))
+    uri.host should be("www.example.com")
+
+    uri.path should be("/test/my first url.html")
+
+
+    uri.userInfoOpt should be (None)
+    uri.portOpt should be(None)
+    uri.queryOpt should be(None)
+    uri.fragmentOpt should be(None)
+  }
+
   it should "handle a non-ascii URL" in {
     val url: String = "http://www.example.com/Is maíth líom/caca.html"
     val percentUrl: String = "http://www.example.com/Is%20maíth%20líom/caca.html"

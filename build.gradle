@@ -1,6 +1,6 @@
 // Equivalent to groupid and version in maven, artifactid equivalent is set in settings.gradle.
 group 'com.szadowsz'
-version '0.0.2'
+version '0.0.3'
 
 buildscript {
     repositories {

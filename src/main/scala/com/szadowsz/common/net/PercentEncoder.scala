@@ -32,21 +32,27 @@ private[net] object PercentEncoder {
   private val reservedR = reserved.r
   private val unencodeable = ("(" + unreserved + "|" + reserved + ")").r
 
+  private val encodedChar = ".*?%\\d\\d.*".r
+
   private def shouldEncode(ch: Char): Boolean = !unencodeable.matches(ch)
 
   private def encode(ch: Char): String = "%" + "%04X".format(ch.toInt).substring(2)
 
   def encode(s: String): String = {
-    val chars = s.getBytes("UTF-8").map(_.toChar)
+    if (!encodedChar.matches(s)) {
+      val chars = s.getBytes("UTF-8").map(_.toChar)
 
-    val encChars = chars.flatMap(ch => {
-      if (shouldEncode(ch)) {
-        encode(ch).getBytes("UTF-8")
-      } else {
-        Array(ch.toByte)
-      }
-    })
+      val encChars = chars.flatMap(ch => {
+        if (shouldEncode(ch)) {
+          encode(ch).getBytes("UTF-8")
+        } else {
+          Array(ch.toByte)
+        }
+      })
 
-    new String(encChars, "UTF-8")
+      new String(encChars, "UTF-8")
+    } else {
+      s
+    }
   }
 }
