@@ -75,9 +75,9 @@ bintray {
         githubRepo ='zakski/project-an-phobail'
         publicDownloadNumbers = false
         version {
-            name = '0.0.2-snapshot'
-            desc = 'Common Scala Functions 0.0.2'
-            vcsTag = '0.0.2'
+            name = '0.0.3-snapshot'
+            desc = 'Common Scala Functions 0.0.3'
+            vcsTag = '0.0.3'
         }
     }
 }
