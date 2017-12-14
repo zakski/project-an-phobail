@@ -32,7 +32,7 @@ private[net] object PercentEncoder {
   private val reservedR = reserved.r
   private val unencodeable = ("(" + unreserved + "|" + reserved + ")").r
 
-  private val encodedChar = ".*?%\\d\\d.*".r
+  private val encodedChar = ".*?%[\\dA-F]{2}.*".r
 
   private def shouldEncode(ch: Char): Boolean = !unencodeable.matches(ch)
 
