@@ -1,13 +1,13 @@
 // Equivalent to groupid and version in maven, artifactid equivalent is set in settings.gradle.
 group 'com.szadowsz'
-version '0.0.4'
+version '1.0.0'
 
 buildscript {
     repositories {
         jcenter()
     }
     dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.+'
     }
 }
 
@@ -24,11 +24,11 @@ apply plugin: 'java'
 apply plugin: 'scala'
 
 ext {
-    scalaVersion = '2.11.8'
-    scalaTestVersion = '3.0.0'
-    slf4jVersion = '1.7.12'
+    scalaVersion = '2.12.8'
+    scalaTestVersion = '3.0.8'
+    slf4jVersion = '1.7.26'
     junitVersion = '4.11'
-    superCsvVersion = '2.3.1'
+    superCsvVersion = '2.4.0'
 }
 
 idea {
@@ -49,7 +49,7 @@ dependencies {
     compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
     compile group: 'org.slf4j', name: 'slf4j-log4j12', version: slf4jVersion
 
-    testCompile group: 'org.scalatest', name: 'scalatest_2.11', version: scalaTestVersion
+    testCompile group: 'org.scalatest', name: 'scalatest_2.12', version: scalaTestVersion
     testCompile group: 'junit', name: 'junit', version: junitVersion
 }
 
@@ -57,7 +57,11 @@ publishing {
     publications {
         maven(MavenPublication) {
             from components.java
-         }
+            groupId 'com.szadowsz'
+            artifactId 'an-phobail'
+            version '1.0.0'
+
+        }
     }
 }
 
@@ -75,9 +79,9 @@ bintray {
         githubRepo ='zakski/project-an-phobail'
         publicDownloadNumbers = false
         version {
-            name = '0.0.4-snapshot'
-            desc = 'Common Scala Functions 0.0.4'
-            vcsTag = '0.0.4'
+            name = '1.0.0-snapshot'
+            desc = 'Common Scala Functions 1.0.0'
+            vcsTag = '1.0.0'
         }
     }
 }
